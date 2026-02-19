@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-core_packages=(git make unzip ripgrep)
+core_packages=(make ripgrep)
 
 brew_bin="$(command -v brew || true)"
 if [ -z "$brew_bin" ]; then
