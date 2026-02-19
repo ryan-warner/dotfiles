@@ -1,0 +1,77 @@
+export VISUAL=nvim
+export EDITOR=$VISUAL
+alias vi=nvim
+
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+fi
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+if [ -f "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v atuin >/dev/null 2>&1; then
+  if [ -f "$HOME/.atuin/bin/env" ]; then
+    . "$HOME/.atuin/bin/env"
+  fi
+  eval "$(atuin init zsh)"
+fi
+
+if command -v aws_completer >/dev/null 2>&1; then
+  autoload bashcompinit && bashcompinit
+  autoload -Uz compinit && compinit
+  complete -C "$(command -v aws_completer)" aws
+fi
+
+if [ -f "$HOME/.bun/_bun" ]; then
+  source "$HOME/.bun/_bun"
+fi
+
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
+
+if [ -f "$HOME/.local/bin/env" ]; then
+  . "$HOME/.local/bin/env"
+fi
+
+if [ -f "$HOME/.config/secrets/env" ]; then
+  . "$HOME/.config/secrets/env"
+fi
+
+if [ -f "$HOME/.config/zsh/foreflight.zsh" ]; then
+  . "$HOME/.config/zsh/foreflight.zsh"
+fi
+
+if [ -f "$HOME/.config/zsh/personal.zsh" ]; then
+  . "$HOME/.config/zsh/personal.zsh"
+fi

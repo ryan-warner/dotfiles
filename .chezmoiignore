@@ -1,0 +1,10 @@
+.gitignore
+Brewfile
+README.md
+.DS_Store
+**/.DS_Store
+**/*-receipt.json
+**/lazy-lock.json
+**/.git/**
+linux/**
+scripts/**

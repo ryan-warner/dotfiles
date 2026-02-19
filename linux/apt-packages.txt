@@ -1,0 +1,10 @@
+git
+make
+unzip
+ripgrep
+fzf
+direnv
+jq
+neovim
+zoxide
+git-lfs

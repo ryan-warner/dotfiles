@@ -1,0 +1,30 @@
+[user]
+    name = "Ryan Warner"
+    email = "ry@nwarner.me"
+[includeIf "gitdir:~/Developer/ForeFlight/"]
+    path = ~/.gitconfig-ff
+[http]
+	postBuffer = 157286400
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = osxkeychain
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://github.com"]
+	useHttpPath = true
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[core]
+	editor = nvim
+[diff]
+    external = difft
+	tool = difft

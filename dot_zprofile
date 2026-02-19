@@ -1,0 +1,26 @@
+if [ -d "/opt/homebrew/opt/libpq/bin" ]; then
+  export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+fi
+
+if [ -d "/Applications/Postgres.app/Contents/Versions/17/bin" ]; then
+  export PATH="/Applications/Postgres.app/Contents/Versions/17/bin:$PATH"
+fi
+
+export BUN_INSTALL="$HOME/.bun"
+if [ -d "$BUN_INSTALL/bin" ]; then
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *)
+    if [ -d "$PNPM_HOME" ]; then
+      export PATH="$PNPM_HOME:$PATH"
+    fi
+    ;;
+esac
+
+if [ -d "$HOME/.opencode/bin" ]; then
+  export PATH="$HOME/.opencode/bin:$PATH"
+fi

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v apt-get >/dev/null 2>&1; then
+  exit 0
+fi
+
+package_file="$(chezmoi source-path)/linux/apt-packages.txt"
+
+if [ -f "$package_file" ]; then
+  sudo apt-get update
+  xargs -a "$package_file" sudo apt-get install -y
+fi
+
+if command -v nvim >/dev/null 2>&1; then
+  nvim --headless "+Lazy! sync" +qa
+fi
+
+# apt-packages snapshot for chezmoi change detection:
+{{- include "linux/apt-packages.txt" | comment -}}
