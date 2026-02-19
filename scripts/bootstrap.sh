@@ -22,6 +22,7 @@ if ! command -v chezmoi >/dev/null 2>&1; then
     fi
 
     "$brew_bin" install chezmoi
+    eval "$("$brew_bin" shellenv)"
   else
     bin_dir="$HOME/.local/bin"
     mkdir -p "$bin_dir"
