@@ -36,7 +36,12 @@ fi
 
 "$brew_bin" bundle --file "$source_dir/Brewfile"
 
-if command -v nvim >/dev/null 2>&1; then
+brew_prefix="$($brew_bin --prefix)"
+nvim_bin="$brew_prefix/bin/nvim"
+
+if [ -x "$nvim_bin" ]; then
+  "$nvim_bin" --headless "+Lazy! sync" +qa
+elif command -v nvim >/dev/null 2>&1; then
   nvim --headless "+Lazy! sync" +qa
 fi
 
