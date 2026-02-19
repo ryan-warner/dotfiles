@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if ! command -v chezmoi >/dev/null 2>&1; then
-  sh -c "$(curl -fsLS get.chezmoi.io)"
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
 fi
 
 if ! command -v chezmoi >/dev/null 2>&1; then
