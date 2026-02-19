@@ -19,6 +19,12 @@ WIP of my dotfiles layout using chezmoi, somewhat broken out into personal/work-
 ## Notes
 - Local secrets can live in private_dot_config/secrets/env (none required at the moment)
 - Run scripts in scripts/ as needed (bootstrap just applies chezmoi)
-- Neovim config lives in dot_config/nvim (plugins sync once after initial apply if nvim is installed)
+- Neovim config lives in dot_config/nvim (plugins sync after package installs)
 - Cursor/VS Code settings are not managed yet
 - Brewfile and linux package lists are repo-only (not applied to $HOME)
+
+## Updating dotfiles
+- Preferred: edit files directly in this repo, then run `chezmoi apply` (or `scripts/bootstrap.sh`)
+- If you edit files in $HOME directly, capture changes with `chezmoi add <file>` or `chezmoi re-add`
+- If you changed both source and target, use `chezmoi merge <file>`
+- Reference: https://www.chezmoi.io/user-guide/frequently-asked-questions/usage/#how-do-i-edit-my-dotfiles-with-chezmoi
