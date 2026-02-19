@@ -35,4 +35,15 @@ if ! command -v chezmoi >/dev/null 2>&1; then
   exit 1
 fi
 
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+config_dir="$HOME/.config/chezmoi"
+config_file="$config_dir/chezmoi.toml"
+
+if [ ! -f "$config_file" ]; then
+  mkdir -p "$config_dir"
+  printf 'sourceDir = "%s"\n' "$repo_dir" > "$config_file"
+fi
+
+export CHEZMOI_SOURCE_DIR="$repo_dir"
+
 chezmoi apply
