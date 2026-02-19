@@ -17,4 +17,4 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 
 # apt-packages snapshot for chezmoi change detection:
-{{- include "linux/apt-packages.txt" | comment -}}
+{{- include "linux/apt-packages.txt" | comment "# " -}}
