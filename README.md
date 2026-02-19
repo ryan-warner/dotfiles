@@ -3,6 +3,7 @@
 WIP of my dotfiles layout using chezmoi, somewhat broken out into personal/work-related tools. 
 
 ## Bootstrap
+- Clone repo: `git clone https://github.com/ryan-warner/dotfiles ~/dotfiles`
 - Run `scripts/bootstrap.sh` (just runs `chezmoi apply`)
 
 ## Installation behavior
