@@ -24,7 +24,17 @@ if [ -z "$brew_bin" ]; then
   fi
 fi
 
-"$brew_bin" bundle --file "$(chezmoi source-path)/Brewfile"
+source_dir="${CHEZMOI_SOURCE_DIR:-}"
+if [ -z "$source_dir" ] && [ -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
+  source_dir="$(awk -F '=' '/^sourceDir/{gsub(/[ \t\"]+/, "", $2); print $2; exit}' "$HOME/.config/chezmoi/chezmoi.toml")"
+fi
+
+if [ -z "$source_dir" ]; then
+  echo "CHEZMOI_SOURCE_DIR not set and sourceDir not found."
+  exit 1
+fi
+
+"$brew_bin" bundle --file "$source_dir/Brewfile"
 
 if command -v nvim >/dev/null 2>&1; then
   nvim --headless "+Lazy! sync" +qa

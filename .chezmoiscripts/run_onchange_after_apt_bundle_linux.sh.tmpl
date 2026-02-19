@@ -5,7 +5,17 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 0
 fi
 
-package_file="$(chezmoi source-path)/linux/apt-packages.txt"
+source_dir="${CHEZMOI_SOURCE_DIR:-}"
+if [ -z "$source_dir" ] && [ -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
+  source_dir="$(awk -F '=' '/^sourceDir/{gsub(/[ \t\"]+/, "", $2); print $2; exit}' "$HOME/.config/chezmoi/chezmoi.toml")"
+fi
+
+if [ -z "$source_dir" ]; then
+  echo "CHEZMOI_SOURCE_DIR not set and sourceDir not found."
+  exit 1
+fi
+
+package_file="$source_dir/linux/apt-packages.txt"
 
 if [ -f "$package_file" ]; then
   sudo apt-get update
