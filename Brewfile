@@ -22,6 +22,7 @@ cask "font-fira-code-nerd-font"
 cask "chatgpt"
 cask "jordanbaird-ice"
 cask "orbstack"
+cask "obsidian"
 cask "raycast"
 cask "tailscale"
 
