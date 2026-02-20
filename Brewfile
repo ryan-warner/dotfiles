@@ -1,5 +1,6 @@
 tap "nikitabobko/tap"
 brew "aws-vault"
+brew "atuin"
 brew "difftastic"
 brew "direnv"
 brew "fzf"
