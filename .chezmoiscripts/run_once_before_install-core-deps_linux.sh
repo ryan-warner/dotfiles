@@ -5,6 +5,7 @@ core_packages=(git gcc make unzip ripgrep curl)
 
 if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get update
+  sudo apt-get install build-essential -y
   sudo apt-get install -y "${core_packages[@]}"
 elif command -v dnf >/dev/null 2>&1; then
   sudo dnf install -y "${core_packages[@]}"
