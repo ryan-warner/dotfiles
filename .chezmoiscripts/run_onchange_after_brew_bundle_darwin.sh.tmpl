@@ -34,7 +34,7 @@ if [ -z "$source_dir" ]; then
   exit 1
 fi
 
-"$brew_bin" bundle --file "$source_dir/Brewfile"
+"$brew_bin" bundle --force --file "$source_dir/Brewfile"
 
 brew_prefix="$($brew_bin --prefix)"
 nvim_bin="$brew_prefix/bin/nvim"
