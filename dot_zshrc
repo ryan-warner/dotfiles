@@ -1,6 +1,12 @@
 export VISUAL=nvim
 export EDITOR=$VISUAL
 alias vi=nvim
+bootstrap() {
+  "$HOME/dotfiles/scripts/bootstrap.sh"
+  if [ -f "$HOME/.zshrc" ]; then
+    . "$HOME/.zshrc"
+  fi
+}
 
 if ! command -v brew >/dev/null 2>&1; then
   if [ -x "/opt/homebrew/bin/brew" ]; then
