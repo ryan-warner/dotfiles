@@ -26,4 +26,13 @@ if [ -z "$brew_bin" ]; then
   fi
 fi
 
-"$brew_bin" install "${core_packages[@]}"
+missing=()
+for pkg in "${core_packages[@]}"; do
+  if ! "$brew_bin" list --formula "$pkg" >/dev/null 2>&1; then
+    missing+=("$pkg")
+  fi
+done
+
+if [ "${#missing[@]}" -gt 0 ]; then
+  "$brew_bin" install "${missing[@]}"
+fi
