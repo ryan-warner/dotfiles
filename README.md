@@ -23,6 +23,9 @@ WIP of my dotfiles layout using chezmoi, somewhat broken out into personal/work-
 - Neovim config lives in dot_config/nvim (plugins sync after package installs)
 - Cursor/VS Code settings are not managed yet
 - Brewfile and linux package lists are repo-only (not applied to $HOME)
+- Ghostty config lives at XDG path; remove macOS-specific config to avoid overrides
+- Ghostty font comes from Homebrew cask: font-fira-code-nerd-font
+- Linux installs FiraCode Nerd Font via Nerd Fonts release script
 
 ## Updating dotfiles
 - Preferred: edit files directly in this repo, then run `chezmoi apply` (or `scripts/bootstrap.sh`)

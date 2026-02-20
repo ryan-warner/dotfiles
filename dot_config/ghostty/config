@@ -1,0 +1,14 @@
+theme = Github Dark
+font-family = "FiraCode Nerd Font"
+window-padding-x = 12
+window-padding-y = 6
+
+# extras
+shell-integration-features = true
+copy-on-select = clipboard
+focus-follows-mouse = true
+link-url = true
+desktop-notifications = true
+
+# secure input
+macos-auto-secure-input = true

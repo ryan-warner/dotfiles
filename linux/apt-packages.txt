@@ -2,9 +2,11 @@ git
 make
 unzip
 ripgrep
+curl
 fzf
 direnv
 jq
 neovim
 zoxide
 git-lfs
+fontconfig

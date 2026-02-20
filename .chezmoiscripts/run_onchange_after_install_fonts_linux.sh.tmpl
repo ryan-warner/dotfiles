@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+font_version="{{- include "linux/fonts/nerd-fonts-version.txt" | trim -}}"
+font_name="FiraCode"
+font_zip="${font_name}.zip"
+url="https://github.com/ryanoasis/nerd-fonts/releases/download/${font_version}/${font_zip}"
+
+dest_dir="$HOME/.local/share/fonts"
+tmp_dir="$(mktemp -d)"
+
+cleanup() {
+  rm -rf "$tmp_dir"
+}
+trap cleanup EXIT
+
+mkdir -p "$dest_dir"
+
+if command -v curl >/dev/null 2>&1; then
+  curl -fsSL -o "$tmp_dir/$font_zip" "$url"
+elif command -v wget >/dev/null 2>&1; then
+  wget -O "$tmp_dir/$font_zip" "$url"
+else
+  echo "curl or wget is required to download Nerd Fonts."
+  exit 1
+fi
+
+if ! command -v unzip >/dev/null 2>&1; then
+  echo "unzip is required to install Nerd Fonts."
+  exit 1
+fi
+
+unzip -o "$tmp_dir/$font_zip" -d "$dest_dir"
+
+if command -v fc-cache >/dev/null 2>&1; then
+  fc-cache -f "$dest_dir"
+fi
+
+# nerd-fonts version snapshot for chezmoi change detection:
+{{- include "linux/fonts/nerd-fonts-version.txt" | comment "# " -}}
