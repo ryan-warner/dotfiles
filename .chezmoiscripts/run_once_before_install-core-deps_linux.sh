@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-core_packages=(git make unzip ripgrep curl)
+core_packages=(git gcc make unzip ripgrep curl)
 
 if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get update
