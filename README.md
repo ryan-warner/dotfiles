@@ -26,6 +26,7 @@ WIP of my dotfiles layout using chezmoi, somewhat broken out into personal/work-
 - Ghostty config lives at XDG path; remove macOS-specific config to avoid overrides
 - Ghostty font comes from Homebrew cask: font-fira-code-nerd-font
 - Linux installs FiraCode Nerd Font via Nerd Fonts release script
+- Linux caps->escape applies via gsettings when available and falls back to setxkbmap
 
 ## Updating dotfiles
 - Preferred: edit files directly in this repo, then run `chezmoi apply` (or `scripts/bootstrap.sh`)
