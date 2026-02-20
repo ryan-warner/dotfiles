@@ -1,5 +1,4 @@
 tap "nikitabobko/tap"
-tap "homebrew/cask-fonts"
 brew "aws-vault"
 brew "atuin"
 brew "difftastic"
