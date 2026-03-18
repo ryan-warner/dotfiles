@@ -4,7 +4,7 @@ WIP of my dotfiles layout using chezmoi, somewhat broken out into personal/work-
 
 ## Bootstrap
 - Clone repo: `git clone https://github.com/ryan-warner/dotfiles ~/dotfiles`
-- Run `scripts/bootstrap.sh` (just runs `chezmoi apply`)
+- Run `scripts/bootstrap.sh` (requires sudo on Linux for package installs and setting default shell to zsh)
 
 ## Installation behavior
 - Core deps are installed via OS-specific chezmoi scripts
