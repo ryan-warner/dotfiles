@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ "$(uname -s)" != "Linux" ]; then
+  exit 0
+fi
+
 if command -v gsettings >/dev/null 2>&1; then
   if gsettings list-schemas 2>/dev/null | grep -q "org.gnome.desktop.input-sources"; then
     current="$(gsettings get org.gnome.desktop.input-sources xkb-options)"

@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ "$(uname -s)" != "Linux" ]; then
+  exit 0
+fi
+
 core_packages=(git gcc make unzip ripgrep curl)
 
 if command -v apt-get >/dev/null 2>&1; then

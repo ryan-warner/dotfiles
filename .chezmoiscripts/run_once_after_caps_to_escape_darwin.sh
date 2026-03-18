@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ "$(uname -s)" != "Darwin" ]; then
+  exit 0
+fi
+
 src=30064771129
 dst=30064771113
 

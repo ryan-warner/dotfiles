@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ "$(uname -s)" != "Darwin" ]; then
+  exit 0
+fi
+
 core_packages=(make ripgrep gcc)
 
 brew_bin="$(command -v brew || true)"
