@@ -19,10 +19,10 @@
 [credential "https://github.com"]
 	useHttpPath = true
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/bin/sh -c 'command -v gh >/dev/null && gh auth git-credential'
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/bin/sh -c 'command -v gh >/dev/null && gh auth git-credential'
 [core]
 	editor = nvim
 [diff]
