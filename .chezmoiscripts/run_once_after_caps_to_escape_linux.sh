@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if command -v gsettings >/dev/null 2>&1; then
-  if gsettings list-schemas | grep -q "org.gnome.desktop.input-sources"; then
+  if gsettings list-schemas 2>/dev/null | grep -q "org.gnome.desktop.input-sources"; then
     current="$(gsettings get org.gnome.desktop.input-sources xkb-options)"
     case "$current" in
       *"caps:escape"*)
